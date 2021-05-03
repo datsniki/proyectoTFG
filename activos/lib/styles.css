@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Contenido Main */
+.banner {
+    background-color: black;
+    
+}
+.banner>section {
+    background-size: cover;
+    max-height: 400px;
+    background-image: url("../img/banner.jpg");
+    overflow: hidden;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contenidoMain {
+    margin-top: 3em;
+    text-align: center;
+}
+
+.entrenamientos {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+.entrenamientos>div {
+    min-width: fit-content;
+    max-width: fit-content;
+    border: 2px solid black;
+    border-radius: 10%;
+    overflow: hidden;
+    flex: auto;
+}
+
+.horario {
+    text-align: right;
+}
+
+/* Footer */
+
+footer {
+    color: white;
+    text-align: center;
+    padding: 1em;
+}
+footer>div {
+    display: flex;
+    flex-flow: column;
+}
+
+footer img {
+    width: 150px;
+}
+
+.social i {
+    font-size: 2em;
+    padding: .5em;
+}
