@@ -4,11 +4,16 @@
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
 }
-
+body {
+    background-image: url("../img/background.jpg");
+    background-repeat: repeat;
+}
+a:hover {
+    text-decoration: none;
+}
 /* Contenido Main */
 .banner {
-    background-color: black;
-    
+    background-color: black;   
 }
 .banner>section {
     background-size: cover;
@@ -20,6 +25,12 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+@media (max-width: 1000px) {
+    .banner>section {
+        background-image: none;
+    }
 }
 
 .contenidoMain {
