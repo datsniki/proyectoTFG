@@ -30,6 +30,7 @@
                         <a href="index.php" class="btn btn-dark">Volver al Inicio</a>
                     </div>
                 <?php
+                    //Si si tiene ejercicios los mostramos
                 } else {
                     $lista = cargarListaEjercicios($conexion, "entrenamientos_ejercicios", "cod_entrenamiento", $codEntrenamiento);
                 ?>
