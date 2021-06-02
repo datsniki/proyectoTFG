@@ -18,4 +18,4 @@ El objetivo general es realizar una página web en la que los usuarios puedan te
 
 
 ## Autor
-Todo el código ha sido creado por Juan A. (DatSniki) excepto las librerias utilizadas de [Bootstrap](https://getbootstrap.com) y [jQuery](https://jquery.com)
+Todo el código ha sido creado por Juan A. (DatSniki) excepto las librerias utilizadas de [Bootstrap](https://getbootstrap.com), [JQuery](https://jquery.com) y [FontAwesome](https://fontawesome.com/)
