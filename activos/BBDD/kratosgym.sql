@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-05-2021 a las 16:59:43
+-- Tiempo de generación: 04-06-2021 a las 12:57:26
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -237,8 +237,8 @@ ALTER TABLE `entrenamientos_ejercicios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`cod_usuario`),
-  ADD UNIQUE KEY `cod_clase` (`cod_clase`),
-  ADD KEY `cod_cuota` (`cod_cuota`);
+  ADD KEY `cod_cuota` (`cod_cuota`),
+  ADD KEY `cod_clase` (`cod_clase`);
 
 --
 -- Indices de la tabla `usuario_ejercicio`
@@ -262,13 +262,13 @@ ALTER TABLE `clasecolectiva`
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `cod_consulta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cod_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cuotas`
 --
 ALTER TABLE `cuotas`
-  MODIFY `cod_cuota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cod_cuota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `ejercicios`
@@ -292,13 +292,13 @@ ALTER TABLE `entrenamientos_ejercicios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `cod_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario_ejercicio`
 --
 ALTER TABLE `usuario_ejercicio`
-  MODIFY `codigoUE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `codigoUE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- Restricciones para tablas volcadas
@@ -315,8 +315,8 @@ ALTER TABLE `entrenamientos_ejercicios`
 -- Filtros para la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`cod_clase`) REFERENCES `clasecolectiva` (`cod_clase`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`cod_cuota`) REFERENCES `cuotas` (`cod_cuota`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`cod_cuota`) REFERENCES `cuotas` (`cod_cuota`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuarios_ibfk_3` FOREIGN KEY (`cod_clase`) REFERENCES `clasecolectiva` (`cod_clase`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario_ejercicio`
