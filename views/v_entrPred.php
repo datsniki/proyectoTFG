@@ -5,37 +5,32 @@
     $query = "SELECT * FROM entrenamientos_ejercicios WHERE cod_entrenamiento = $codEntrenamiento";
     $consulta = mysqli_query($conexion, $query);
 
+    // Si el entrenamiento no tiene ningun ejercicio mostramos no disponible
+    if (mysqli_num_rows($consulta) == 0) {
     ?>
-
-    <div class="container my-4">
-        <div class="row">
-            <div class="col-lg-3 col-md-4">
-                <?php
-                $datos = mysqli_fetch_assoc(mysqli_query($conexion, "SELECT * FROM entrenamientos WHERE cod_entrenamiento=$codEntrenamiento"));
-                ?>
-                <img class="w-100" src="<?php echo $datos['imagen']; ?>" alt="">
-                <h3 class="p-3 bg-dark text-center text-light"><?php echo $datos['nombre']; ?></h3>
-                <p style="border: 2px solid grey;" class="rounded py-4 px-2 bg-light">
-                    <?php echo $datos['descripcion']; ?>
-                </p>
-            </div>
-            <div class="col-lg-9 col-md-8">
-                <?php
-                // Si el entrenamiento no tiene ningun ejercicio
-                if (mysqli_num_rows($consulta) == 0) {
-                ?>
-                    <div class="d-flex justify-content-center text-center align-items-center h-100 flex-column">
-                        <img src="activos/img/index/logob.png" alt="">
-                        <h1 class="text-secondary">Este entrenamiento no Tiene ejercicios actualmente</h1>
-                        <a href="index.php" class="btn btn-dark">Volver al Inicio</a>
-                    </div>
-                <?php
-                    //Si si tiene ejercicios los mostramos
-                } else {
-                    $lista = cargarListaEjercicios($conexion, "entrenamientos_ejercicios", "cod_entrenamiento", $codEntrenamiento);
-                ?>
-
-
+        <div class="d-flex justify-content-center align-items-center h-100 flex-column">
+            <img src="activos/img/index/logob.png" alt="">
+            <h1 class="text-secondary">Este entrenamiento no está disponible temporalmente</h1>
+            <a href="index.php" class="btn btn-dark">Volver al Inicio</a>
+        </div>
+    <?php
+        // Mostramos los datos y los ejercicios del entrenamiento
+    } else {
+        $lista = cargarListaEjercicios($conexion, "entrenamientos_ejercicios", "cod_entrenamiento", $codEntrenamiento);
+    ?>
+        <div class="container my-4">
+            <div class="row">
+                <div class="col-lg-3 col-md-4">
+                    <?php
+                    $datos = mysqli_fetch_assoc(mysqli_query($conexion, "SELECT * FROM entrenamientos WHERE cod_entrenamiento=$codEntrenamiento"));
+                    ?>
+                    <img class="w-100" src="<?php echo $datos['imagen']; ?>" alt="">
+                    <h3 class="p-3 bg-dark text-center text-light"><?php echo $datos['nombre']; ?></h3>
+                    <p style="border: 2px solid grey;" class="rounded py-4 px-2 bg-light">
+                        <?php echo $datos['descripcion']; ?>
+                    </p>
+                </div>
+                <div class="col-lg-9 col-md-8">
                     <h3 class="px-4">Ejercicios del Entrenamiento:</h3>
                     <?php
                     for ($i = 0; $i < count($lista); $i++) {
@@ -53,11 +48,14 @@
                                 </div>
                             </form>
                         </div>
-                <?php
+                    <?php
                     }
-                }
-                ?>
+
+                    ?>
+                </div>
             </div>
         </div>
-    </div>
+    <?php
+    }
+    ?>
 </main>
