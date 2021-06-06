@@ -76,7 +76,11 @@ $('#password, #password2').keyup(function (e) {
 })
 //No enviar form si las contraseñas no coinciden
 $('#register').click(function (e) {
-    if ($('#password').val() != $('#password2').val()) {
+    let regex = /(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}/;
+    if (!regex.test($('#password').val())) {
+        e.preventDefault();
+        $("#registerAlert").html("La contraseña no tiene el formato correcto")
+    } else if ($('#password').val() != $('#password2').val()) {
         e.preventDefault();
         $("#registerAlert").html("Haz Coincidir las contraseñas")
     } else {
