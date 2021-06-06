@@ -85,31 +85,39 @@ $('#register').click(function (e) {
 })
 
 //Mostrar el formato de la contraseña
-$('#password').focus(function () {
+$('#password').keyup(function () {
     let regex = /(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}/;
     if (!regex.test($(this).val())) {
         $('#passAlert').html("1 Mayus, 1 Min, 1 Num, (8-16 Caracteres)")
+    } else {
+        $('#passAlert').html("")
     }
 })
 //Mostrar el formato del dni
-$('#dni').focus(function () {
+$('#dni').keyup(function () {
     let regex = /[0-9]{8}[A-Za-z]{1}/;
     if (!regex.test($(this).val())) {
         $('#dniAlert').html("Formato: 12345678A")
+    } else {
+        $('#dniAlert').html("")
     }
 })
 //Mostrar el formato del iban
-$('#iban').focus(function () {
+$('#iban').keyup(function () {
     let regex = /[A-Z]{2}[0-9]{2}(?:[ ]?[0-9]{4}){4}/;
     if (!regex.test($(this).val())) {
         $('#ibanAlert').html("Formato: AE12 1234 1234 1234 1234")
+    } else {
+        $('#ibanAlert').html("")
     }
 })
 //Mostrar el formato del telefono
-$('#telefono').focus(function () {
+$('#telefono').keyup(function () {
     let regex = /(?:[ ]?[0-9]{3}){3}/;
     if (!regex.test($(this).val())) {
         $('#telfAlert').html("Formato: 123 123 123")
+    } else {
+        $('#telfAlert').html("")
     }
 })
 //-------------
